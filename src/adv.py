@@ -1,4 +1,13 @@
+import cmd
+import textwrap
+import sys
+import os
+import time
+import random
+
+
 from room import Room
+from player import Player
 
 # Declare all the rooms
 
@@ -36,9 +45,52 @@ room['treasure'].s_to = room['narrow']
 #
 # Main
 #
+def title_screen_selections():
+    option = input("> ")
+    if option.lower() == ("play"):
+        start_game()  # placeholder until written
+    elif option.lower() == ("help"):
+        help_menu()
+    elif option.lower() == ("quit"):
+        sys.exit()
+    while option.lower() not in ['play', 'help', 'quit']:
+        print("Please enter a valid command")
+        option = input("> ")
+        if option.lower() == ("play"):
+            start_game()  # placeholder until written
+        elif option.lower() == ("help"):
+            help_menu()
+        elif option.lower() == ("quit"):
+            sys.exit()
+
+def title_screen():
+    os.system('clear')
+    print('############################')
+    print('# Welcome to the Text RPG! #')
+    print('############################')
+    print('          - Play -          ')
+    print('          - Help -          ')
+    print('          - Quit -          ')
+    title_screen_selections()
+
+def help_menu():
+    print('############################')
+    print('# Welcome to the Text RPG! #')
+    print('############################')
+    print('- Use up, down, left, right to move')
+    print('- Type your commands to do them')
+    print('- Use "look" to inspect something')
+    title_screen_selections()
+
+def print_location():
+    print('\n' + ('#' * (4 + len(player.location))))
+    print('# ' + player.location + ' #')
+    print('# ' + room[player.location].discription + ' #')
+    print('\n' + ('#' * (4 + len(player.location))))
 
 # Make a new player object that is currently in the 'outside' room.
-
+play_name = input("Enter character name: ")
+player = Player(play_name, room['outside'])
 # Write a loop that:
 #
 # * Prints the current room name
@@ -49,3 +101,6 @@ room['treasure'].s_to = room['narrow']
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
+
+def start_game():
+    return 

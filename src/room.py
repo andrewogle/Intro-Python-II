@@ -6,10 +6,10 @@ class Room:
         self.discription = discription
         self.name = name
         self.item = []
-        self.n_to = None
-        self.s_to = None
-        self.e_to = None
-        self.w_to = None
+        self.n_to = "wall"
+        self.s_to = "wall"
+        self.e_to = "wall"
+        self.w_to = "wall"
 
     def __str__(self):
         return f'your current location is {self.name}'
