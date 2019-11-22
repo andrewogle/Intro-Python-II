@@ -8,6 +8,11 @@ import random
 
 from room import Room
 from player import Player
+from item import Item
+
+### items ###
+key = Item('key', 'rusty old key')
+dagger = Item('dagger', 'bloody dagger')
 
 # Declare all the rooms
 
@@ -16,7 +21,7 @@ room = {
                      "North of you, the cave mount beckons"),
 
     'foyer':    Room("foyer", """Dim light filters in from the south. Dusty
-passages run north and east."""),
+passages run north and east.""", [key, dagger]),
 
     'overlook': Room("overlook", """A steep cliff appears before you, falling
 into the darkness. Ahead to the north, a light flickers in
@@ -42,13 +47,16 @@ room['narrow passage'].w_to = room['foyer']
 room['narrow passage'].n_to = room['treasure chamber']
 room['treasure chamber'].s_to = room['narrow passage']
 
+
+
+
 #
 # Main
 #
 def title_screen_selections():
     option = input("> ")
     if option.lower() == ("play"):
-        start_game()  # placeholder until written
+        start_game() 
     elif option.lower() == ("help"):
         help_menu()
     elif option.lower() == ("quit"):
@@ -57,7 +65,7 @@ def title_screen_selections():
         print("Please enter a valid command")
         option = input("> ")
         if option.lower() == ("play"):
-            start_game()  # placeholder until written
+            start_game() 
         elif option.lower() == ("help"):
             help_menu()
         elif option.lower() == ("quit"):

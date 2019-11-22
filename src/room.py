@@ -11,5 +11,4 @@ class Room:
         self.e_to = "wall"
         self.w_to = "wall"
 
-    def __str__(self):
-        return f'your current location is {self.name}'
+    
